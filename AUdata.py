@@ -92,7 +92,7 @@ class GAM_Attention(nn.Module):
         out = out * x_spatial_att
         avg_out = torch.mean(out,dim=1,keepdim=True)
         max_out,_ = torch.max(out, dim=1, keepdim=True)
-        attn = torch.cat((avg_out,max),dim=1)
+        attn = torch.cat((avg_out,max_out),dim=1)
         attn = self.conv3(attn)
 
         if attn_last is not None:
